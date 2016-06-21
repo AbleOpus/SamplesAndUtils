@@ -13,9 +13,8 @@ namespace TicTacToe.Forms
         public MainForm()
         {
             InitializeComponent();
-            opponent = new ComputerPlayer(grid);
-            opponent.Mode = OpponentMoveMode.Logical;
-            opponent.MoveMade += _opponent_MoveMade;
+            opponent = new ComputerPlayer(grid) {Mode = OpponentMoveMode.Logical};
+            opponent.MoveMade += opponent_MoveMade;
             SetupCells();
             SetCellBounds();
             grid.CellColor = Color.Gray;
@@ -52,7 +51,7 @@ namespace TicTacToe.Forms
             SetCellBounds();
         }
 
-        private void _opponent_MoveMade(object sender, EventArgs e)
+        private void opponent_MoveMade(object sender, EventArgs e)
         {
             if (!CellBlinker.IsBlinking)
             {
