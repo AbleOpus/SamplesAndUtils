@@ -26,11 +26,19 @@ namespace AboCodeLibrary
             return (number & 1).Equals(0);
         }
 
+        /// <summary>
+        /// Gets short-form information about a Font.
+        /// </summary>
+        /// <param name="font"></param>
+        /// <returns>A simple string representation of the Font.</returns>
         public static string GetBasicInfo(this Font font)
         {
             return font.FontFamily.Name + " " + font.Size;
         }
 
+        /// <summary>
+        /// Docks the Form to the left of the screen it is within.
+        /// </summary>
         public static void DockLeft(this Form form)
         {
             form.WindowState = FormWindowState.Normal;
@@ -40,6 +48,9 @@ namespace AboCodeLibrary
             form.Location = Screen.PrimaryScreen.Bounds.Location;
         }
 
+        /// <summary>
+        /// Docks the Form to the bottom of the screen it is within.
+        /// </summary>
         public static void DockBottom(this Form form)
         {
             form.WindowState = FormWindowState.Normal;
@@ -51,6 +62,9 @@ namespace AboCodeLibrary
             form.Location = new Point(xPos, workAreaHeight / 2);
         }
 
+        /// <summary>
+        /// Docks the Form to the top of the screen it is within.
+        /// </summary>
         public static void DockTop(this Form form)
         {
             form.WindowState = FormWindowState.Normal;
@@ -59,6 +73,9 @@ namespace AboCodeLibrary
             form.Location = Screen.PrimaryScreen.WorkingArea.Location;
         }
 
+        /// <summary>
+        /// Docks the Form to the right of the screen it is within.
+        /// </summary>
         public static void DockRight(this Form form)
         {
             form.WindowState = FormWindowState.Normal;
@@ -110,7 +127,7 @@ namespace AboCodeLibrary
 
         /// <summary>
         /// Converts the char to a boolean. 1 returns true,
-        /// everything else returns false
+        /// everything else returns false.
         /// </summary>
         public static bool ToBoolean(this char c)
         {
