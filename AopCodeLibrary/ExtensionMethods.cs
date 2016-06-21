@@ -42,10 +42,8 @@ namespace AboCodeLibrary
         public static void DockLeft(this Form form)
         {
             form.WindowState = FormWindowState.Normal;
-            int width = Screen.PrimaryScreen.WorkingArea.Width / 2;
-            int height = Screen.PrimaryScreen.WorkingArea.Height;
-            form.Size = new Size(width, height);
-            form.Location = Screen.PrimaryScreen.Bounds.Location;
+            Rectangle rect = Screen.GetWorkingArea(form);
+            form.Bounds = new Rectangle(rect.X, rect.Y, rect.Width /2, rect.Height);
         }
 
         /// <summary>
@@ -54,12 +52,8 @@ namespace AboCodeLibrary
         public static void DockBottom(this Form form)
         {
             form.WindowState = FormWindowState.Normal;
-            form.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            form.Height = Screen.PrimaryScreen.WorkingArea.Height / 2;
-
-            int xPos = Screen.PrimaryScreen.WorkingArea.X;
-            int workAreaHeight = Screen.PrimaryScreen.WorkingArea.Height;
-            form.Location = new Point(xPos, workAreaHeight / 2);
+            Rectangle rect = Screen.GetWorkingArea(form);
+            form.Bounds = new Rectangle(rect.X, rect.Y + rect.Height / 2, rect.Width, rect.Height / 2);
         }
 
         /// <summary>
@@ -68,9 +62,8 @@ namespace AboCodeLibrary
         public static void DockTop(this Form form)
         {
             form.WindowState = FormWindowState.Normal;
-            form.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            form.Height = Screen.PrimaryScreen.WorkingArea.Height / 2;
-            form.Location = Screen.PrimaryScreen.WorkingArea.Location;
+            Rectangle rect = Screen.GetWorkingArea(form);
+            form.Bounds = new Rectangle(rect.X, rect.Y, rect.Width, rect.Height / 2);
         }
 
         /// <summary>
@@ -79,12 +72,8 @@ namespace AboCodeLibrary
         public static void DockRight(this Form form)
         {
             form.WindowState = FormWindowState.Normal;
-            int width = Screen.PrimaryScreen.WorkingArea.Width / 2;
-            int height = Screen.PrimaryScreen.WorkingArea.Height;
-            form.Size = new Size(width, height);
-            int xPos = SystemInformation.PrimaryMonitorSize.Width - form.Width;
-            int yPos = Screen.PrimaryScreen.WorkingArea.Y / 2;
-            form.Location = new Point(xPos, yPos);
+            Rectangle rect = Screen.GetWorkingArea(form);
+            form.Bounds = new Rectangle(rect.X + rect.Width / 2, rect.Y, rect.Width / 2, rect.Height);
         }
 
         /// <summary>
