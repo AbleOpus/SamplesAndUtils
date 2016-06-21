@@ -3,7 +3,6 @@ using System.Windows.Forms;
 
 namespace AboCodeLibrary
 {
-    // Assume the less specific overloads are error boxes.
     public static class ExtensionMethods
     {
         /// <summary>
