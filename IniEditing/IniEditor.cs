@@ -85,7 +85,7 @@ namespace IniEditing
         /// <summary>
         /// Gets whether content is loaded or not.
         /// </summary>
-        public bool Loaded => content.Count > 0;
+        public bool Loaded => !String.IsNullOrEmpty(FileName);
         #endregion
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace IniEditing
             if (!sectionFound && autoCreateSection)
             {
                 // Only add new line if needed
-                if (content[content.Count - 1].Trim() != string.Empty)
+                if (content.Count > 0 && content[content.Count - 1].Trim() != string.Empty)
                 {
                     content.Add(string.Empty);
                 }
@@ -342,7 +342,7 @@ namespace IniEditing
             if (!sectionFound && autoCreateSection)
             {
                 // Only add new line if needed
-                if (content[content.Count - 1].Trim() != string.Empty)
+                if (content.Count > 0 && content[content.Count - 1].Trim() != string.Empty)
                 {
                     content.Add(string.Empty);
                 }
@@ -357,7 +357,6 @@ namespace IniEditing
 
             return pairFound;
         }
-
 
         /// <summary>
         /// Modifies the value of all occurrences of the key specified.
@@ -970,6 +969,14 @@ namespace IniEditing
                 SB.AppendLine(line);
 
             return SB.ToString();
+        }
+
+        /// <summary>
+        /// Removes all content in memory.
+        /// </summary>
+        public void ClearContent()
+        {
+            content.Clear();
         }
     }
 }
