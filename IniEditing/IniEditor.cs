@@ -103,10 +103,11 @@ namespace IniEditing
         /// <summary>
         /// Checks to see if any content is loaded. if not, throw an exception.
         /// </summary>
+        /// <exception cref="NoFileLoadedException"></exception>
         private void CheckLoaded()
         {
             if (!Loaded)
-                throw new NoFileLoadedException("You must load an .ini file before using this method");
+                throw new NoFileLoadedException("You must load an .ini file before using this method.");
         }
 
         /// <summary>
